@@ -21,7 +21,7 @@
 		<footer>
     		<ul>
         		<li><a href="mailto:rajanm6936@afsenyc.org">email</a></li>
-        		<li><a href="https://github.com/RajanMorf">github.com/hankquinlan</a></li>
+        		<li><a href="https://github.com/RajanMorf">github.com/rajanm6936</a></li>
 			</ul>
 		</footer>
 	</body>
