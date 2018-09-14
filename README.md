@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Rajan Morf, Horrible Cop</title>
+		Rajan Morf 
 	</head>
 	<body>
 		<nav>
