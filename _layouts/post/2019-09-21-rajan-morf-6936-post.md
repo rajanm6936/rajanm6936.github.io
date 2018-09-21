@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "rajan mofr week-1"
+title: "rajan morf week-1"
 date: 2014-04-30
 ---
 
