@@ -1,10 +1,10 @@
 body {
     margin: 60px auto;
-    width: 70%;
+    width: 50%;
 }
 nav ul, footer ul {
     font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    padding: 2px;
+    padding: 1px;
     list-style: none;
     font-weight: bold;
 }
@@ -25,7 +25,7 @@ h1 {
 }
 p {
     font-size: 1.5em;
-    line-height: 1.4em;
+    line-height: 1.5em;
     color: #333;
 }
 footer {
