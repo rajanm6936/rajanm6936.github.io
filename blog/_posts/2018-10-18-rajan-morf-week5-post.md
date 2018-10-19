@@ -5,4 +5,5 @@ date: 2018-10-18
 ---
 #WEEK 5
 
-![github logo](/yeeeboi.png) ![alt text](URL)
+![swiss flag](images/rajan.png)
+
