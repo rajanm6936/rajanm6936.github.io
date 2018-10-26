@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://code.pyret.org/editor#program=1t_6nWYnlURaNkmyIj5sAHkgENKwtl5m5 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>shapes - code.pyret.org</title>
+  <link rel="stylesheet" href="./shapes_files/reset.css">
+  <link rel="stylesheet" href="./shapes_files/jquery-ui.css">
+  <link rel="stylesheet" href="./shapes_files/codemirror.css">
+  <link rel="stylesheet" href="./shapes_files/foldgutter.css">
+  <link rel="stylesheet" href="./shapes_files/shared.css">
+  <link rel="stylesheet" href="./shapes_files/editor.css">
+  <link rel="stylesheet" href="./shapes_files/font-awesome.min.path-fixed.css">
+  <link rel="icon" type="image/png" href="https://code.pyret.org/img/pyret-icon.png">
+  <style id="highlight-styles"></style>
+  <script src="./shapes_files/cb=gapi.loaded_1" async=""></script><script src="./shapes_files/cb=gapi(1).loaded_0" async=""></script><script>var APP_LOG_URL = "";</script>
+<script type="text/javascript" charset="UTF-8" src="./shapes_files/loader.js.download"></script><link id="load-css-0" rel="stylesheet" type="text/css" href="./shapes_files/tooltip.css"><link id="load-css-1" rel="stylesheet" type="text/css" href="./shapes_files/util.css"><script type="text/javascript" charset="UTF-8" src="./shapes_files/jsapi_compiled_format_module.js.download"></script><script type="text/javascript" charset="UTF-8" src="./shapes_files/jsapi_compiled_default_module.js.download"></script><script type="text/javascript" charset="UTF-8" src="./shapes_files/jsapi_compiled_ui_module.js.download"></script><script type="text/javascript" charset="UTF-8" src="./shapes_files/jsapi_compiled_corechart_module.js.download"></script><style>.picker-dialog-frame{width:100%;height:100%;border:0;overflow:hidden}.picker-dialog-bg{position:absolute;top:0;left:0;background-color:#fff;z-index:1000}.picker-dialog{position:absolute;top:0;left:0;background-color:#fff;border:1px solid #acacac;width:auto;padding:0;z-index:1001;overflow:auto;-moz-box-shadow:rgba(0,0,0,.2) 0 4px 16px;-webkit-box-shadow:rgba(0,0,0,.2) 0 4px 16px;box-shadow:rgba(0,0,0,.2) 0 4px 16px}.picker-dialog-content{font-size:0;padding:0}.picker-dialog-title,.picker-dialog-buttons{display:none} </style></head>
+<body style="">
+<div id="header">
+  <div id="bonniemenu" class="menu">
+    <button class="blueButton">
+      <span>▾</span>
+      <img class="logo" src="./shapes_files/pyret-logo.png">
+    </button>
+  </div>
+  <div id="bonniemenuContents" class="menuContents" style="display: none; z-index: 8990;">
+    <div id="welcome" class="menuButton inert" style="text-align: center;">
+      <span>Welcome, <span id="username" style="display: inline; padding: 0px;">rajanm6936@afsenyc.org</span>!</span>
+    </div>
+    <div id="drive-view" class="loginOnly menuButton">
+      <a target="_blank" href="https://code.pyret.org/">My Programs</a>
+    </div>
+    <div id="docs" class="menuButton">
+      <a target="_blank" href="http://pyret.org/docs/">Documentation</a>
+    </div>
+    <div id="font"><div id="font-minus">-</div><div id="font-label">Font (12px)</div><div id="font-plus">+</div></div>
+    <div id="issues" class="menuButton">
+      <a target="_blank" href="https://github.com/brownplt/pyret-lang/issues/new">Report an Issue</a>
+    </div>
+    <div id="discuss" class="menuButton">
+      <a target="_blank" href="https://groups.google.com/forum/#!forum/pyret-discuss">Discuss Pyret</a>
+    </div>
+    <div id="logging">
+      <span>
+        <input id="detailed-logging" type="checkbox">
+        <label for="detailed-logging">Contribute detailed usage information.</label>
+        <a href="https://www.pyret.org/cpo-faq#(part._logging)" target="_blank" rel="noopener noreferrer" class="info-btn" title="Learn More">?</a>
+      </span>
+    </div>
+    <div id="logout" class="menuButton"><a href="https://code.pyret.org/logout">Log out</a></div>
+  </div>
+
+  <button id="connectButton" class="logoutOnly blueButton" style="display: none;">Connect to Google Drive</button>
+  <!--
+  <div id="program-name-container" class="loginOnly">
+    <input id="program-name" type="text" placeholder="Program Name"></input>
+  </div>
+  -->
+
+  <div id="filemenu" class="loginOnly menu" style="display: block;">
+    <button class="blueButton">
+      <span>▾ File</span><span id="filename"> (shapes)</span>
+    </button>
+  </div>
+  <div id="filemenuContents" class="menuContents" style="display: none; z-index: 8990;">
+    <div id="new" class="menuButton"><a href="javascript:void(0)">New</a></div>
+    <div id="open" class="menuButton"><a href="javascript:void(0)">Open</a></div>
+    <div id="save" class="menuButton"><a href="javascript:void(0)">Save</a></div>
+    <div id="saveas" class="menuButton"><a href="javascript:void(0)">Save a copy</a></div>
+    <div id="download" class="menuButton"><a href="javascript:void(0)">Download</a></div>
+    <div id="rename" class="menuButton"><a href="javascript:void(0)">Rename</a></div>
+
+  </div>
+  <button id="insert" class="blueButton loginOnly" style="display: inline-block;">Insert</button>
+  <div id="shareContainer"><div><button class="blueButton">Publish</button></div></div>
+  <!-- <button id="saveButton" class="blueButton loginOnly">Save</button> -->
+  <!-- <button id="openFile" class="blueButton loginOnly">Open</button> -->
+
+  <button id="breakButton" class="blueButton rhs" disabled="disabled">Stop</button>
+  <div id="runPart" class="blueButton rhs">
+    <button id="runDropdown" class="blueButton dropdown rhs">↴</button>
+    <button id="runButton" class="blueButton rhs">Run</button>
+  </div>
+  <ul id="run-dropdown-content">
+    <li id="select-run">Run</li>
+    <li id="select-tc-run">Type-check and run<sup>(beta)</sup></li>
+  </ul>
+</div>
+<div id="toolbar"></div>
+<div id="loader" style="display: none;"><p>Bailing the bilge...</p></div>
+<div id="main" data-highlights=""><div class="replMain"></div><div class="replMain"><textarea style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 214px; left: 43px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 38px; margin-bottom: -17px; border-right-width: 13px; min-height: 232px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div class="CodeMirror-rulers" style="min-height: 904px;"><div class="CodeMirror-ruler" style="border-color: rgb(49, 123, 207); border-left-style: dashed; left: 531.75px;"></div></div><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style="visibility: hidden;"><div class="CodeMirror-cursor" style="left: 4px; top: 210px; height: 14px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># include the DataScience Library</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">include</span> <span class="cm-function-name">shared-gdrive</span><span class="cm-builtin">(</span><span class="cm-string">"Bootstrap-DataScience-v1.2.arr"</span><span class="cm-builtin">,</span> <span class="cm-string">"1jum6V7z8nqaCSnS3rv3uintE2lkktyNq"</span><span class="cm-builtin">)</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">include</span> <span class="cm-variable">tables</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">include</span> <span class="cm-variable">image</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># a table of shapes: </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># triangle, square, rectangle, circle and ellipse</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div><div class="CodeMirror-gutter-elt" style="left: 29px; width: 8px;"><div class="CodeMirror-foldgutter-open CodeMirror-guttermarker-subtle"></div></div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">shapes</span> <span class="cm-builtin">=</span> <span class="cm-keyword">table</span><span class="cm-builtin">:</span> <span class="cm-variable">name</span><span class="cm-builtin">,</span> <span class="cm-variable">corners</span><span class="cm-builtin">,</span> <span class="cm-variable">is-round</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">row</span><span class="cm-builtin">:</span> <span class="cm-string">"triangle"</span><span class="cm-builtin">,</span> <span class="cm-number">3</span> <span class="cm-builtin">,</span> <span class="cm-boolean">false</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">row</span><span class="cm-builtin">:</span> <span class="cm-string">"eclipse"</span><span class="cm-builtin">,</span><span class="cm-number">360</span> <span class="cm-builtin">,</span> <span class="cm-boolean">true</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">row</span><span class="cm-builtin">:</span> <span class="cm-string">"circle"</span><span class="cm-builtin">,</span><span class="cm-number">360</span> <span class="cm-builtin">,</span> <span class="cm-boolean">true</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;<span class="cm-keyword">row</span><span class="cm-builtin">:</span> <span class="cm-string">"square"</span><span class="cm-builtin">,</span> &nbsp; <span class="cm-number">4</span> <span class="cm-builtin">,</span> <span class="cm-boolean">false</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">end</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -38px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 232px;"></div><div class="CodeMirror-gutters" style="height: 245px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 29px;"></div><div class="CodeMirror-gutter CodeMirror-foldgutter"></div></div></div><div class="warning-upper"></div><div class="warning-lower"></div></div></div>
+<!-- MODAL PROMPT (Adapted from W3Schools' example) -->
+<div id="promptModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3></h3>
+    </div>
+    <div class="modal-body">
+    </div>
+    <div class="modal-footer">
+      <button class="submit blueButton">Submit
+      </button><button class="close blueButton">Close
+    </button></div>
+  </div>
+</div>
+<div id="notification" class="notificationArea"><div class="active" style="display: none;">Program saved as shapes</div></div>
+<div id="REPL" class="replContainer ui-resizable">
+<div id="handle" class="ui-resizable-handle ui-resizable-w"></div>
+<div class="repl"><div class="warning-upper"></div><div class="warning-lower"></div><div id="output" class="cm-s-default"><div class="echo-container"><span class="repl-echo"><textarea style="display: none;"></textarea><div class="CodeMirror cm-s-default"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: -17px; border-right-width: 13px; min-height: 22px; min-width: 46.5781px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors"><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 14px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">shapes</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 35px;"></div></div></div></span></div><div class="trace"><span class="trace">Trace #1</span><span class="replOutput"><table class="pyret-table has-icon"><a class="info-icon-top" style="margin-top: 0.3em; margin-right: 0.3em; display: none;"><i class="fa fa-clipboard" aria-hidden="true"></i></a><thead><tr><th><span>name</span></th><th><span>corners</span></th><th><span>is-round</span></th></tr></thead><tbody><tr><td><span class="replTextOutput escaped">"triangle"</span></td><td><span class="replTextOutput">3</span></td><td><span class="replTextOutput">false</span></td></tr><tr><td><span class="replTextOutput escaped">"eclipse"</span></td><td><span class="replTextOutput">360</span></td><td><span class="replTextOutput">true</span></td></tr><tr><td><span class="replTextOutput escaped">"circle"</span></td><td><span class="replTextOutput">360</span></td><td><span class="replTextOutput">true</span></td></tr><tr><td><span class="replTextOutput escaped">"square"</span></td><td><span class="replTextOutput">4</span></td><td><span class="replTextOutput">false</span></td></tr></tbody></table></span></div></div><div class="prompt-container" style="display: block;"><span class="repl-prompt" title="Enter Pyret code here"><textarea style="display: none;"></textarea><div class="CodeMirror cm-s-default CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-vscrollbar" cm-not-content="true"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-hscrollbar" cm-not-content="true"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: -17px; border-right-width: 13px; min-height: 22px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-cursors" style=""><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 14px;">&nbsp;</div></div><div class="CodeMirror-code" role="presentation"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">​</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 13px; width: 1px; border-bottom: 0px solid transparent; top: 22px;"></div><div class="CodeMirror-gutters" style="display: none; height: 35px;"></div></div></div></span></div></div></div>
+<div id="help-keys">
+  <p>Press ESC to close this help window</p>
+  <ul>
+    <li><b>Ctrl-?</b> - Show this help</li>
+    <li><b>Ctrl-s</b> - Save</li>
+    <li><b>Ctrl-m</b> - Toggle sizing of the editor window between 50% and last resize</li>
+    <li><b>Ctrl-Enter</b> - Run the definitions window</li>
+    <li><b>Ctrl-Left</b> - Move cursor left by one word</li>
+    <li><b>Ctrl-Right</b> - Move cursor right by one word</li>
+    <li><b>Alt-Left</b> - If cursor is just before a right-parenthesis or <code>end</code>
+    keyword, move cursor left to matching delimiter; otherwise move cursor left by one word</li>
+    <li><b>Alt-Right</b> - Like <b>Alt-Left</b>, but moving right.</li>
+    <li><b>Esc Left</b> - (two key sequence) synonym
+      for <b>Alt-Left</b>, in case Alt key is in use by browser</li>
+    <li><b>Esc Right</b> - (two key sequence) synonym for <b>Alt-Right</b>.</li>
+  </ul>
+</div>
+<div id="doc-containment">
+<div id="doc-overlay" class="ui-draggable ui-resizable">
+  <div id="doc-bar"><div id="doc-close">✕</div></div>
+  <div id="doc-cover"></div>
+  <div id="doc-left" class="doc-handle ui-resizable-handle ui-resizable-w"></div>
+  <div id="doc-right" class="doc-handle ui-resizable-handle ui-resizable-e"></div>
+  <div id="doc-bottom" class="doc-handle ui-resizable-handle ui-resizable-s"></div>
+  <div id="doc-se-corner" class="doc-handle ui-resizable-handle ui-resizable-se"></div>
+  <div id="doc-sw-corner" class="doc-handle ui-resizable-handle ui-resizable-sw"></div>
+</div>
+</div>
+</div>
+<div id="footer"></div>
+<script src="./shapes_files/es6-shim.js.download"></script>
+<script src="./shapes_files/jquery.min.js.download"></script>
+<script src="./shapes_files/jquery-ui.min.js.download"></script>
+<script src="./shapes_files/dexie.min.js.download"></script>
+<script src="./shapes_files/q.js.download"></script>
+<script src="./shapes_files/loader.js(1).download"></script>
+<script src="./shapes_files/codemirror.js.download"></script>
+<script src="./shapes_files/rulers.js.download"></script>
+<script src="./shapes_files/foldcode.js.download"></script>
+<script src="./shapes_files/foldgutter.js.download"></script>
+<script src="./shapes_files/mark-selection.js.download"></script>
+<script src="./shapes_files/runmode.js.download"></script>
+<script src="./shapes_files/pyret-mode.js.download"></script>
+<script src="./shapes_files/pyret-fold.js.download"></script>
+<script src="./shapes_files/matchkw.js.download"></script>
+<script src="./shapes_files/mousetrap.min.js.download"></script>
+<script src="./shapes_files/mousetrap-global-bind.min.js.download"></script>
+
+<script src="./shapes_files/localSettings.js.download"></script>
+<script src="./shapes_files/log.js.download"></script>
+<script src="./shapes_files/share.js.download"></script>
+<script src="./shapes_files/api-wrapper.js.download"></script>
+<script src="./shapes_files/drive.js.download"></script>
+<script src="./shapes_files/picker.js.download"></script>
+<script src="./shapes_files/sheets.js.download"></script>
+<script src="./shapes_files/authenticate-storage.js.download"></script>
+<script type="text/javascript" src="./shapes_files/loader.js(2).download"></script>
+<script>
+var apiKey = "AIzaSyCNMxdr174XCoKTKoUmDQN4ZMa57HliEbQ";
+function handleGoogLoad() {
+  handleClientLoad(apiKey);
+}
+</script>
+<!-- Google API Loader (For picker) -->
+<script type="text/javascript" src="./shapes_files/jsapi"></script>
+<!-- GAPI Client -->
+<script type="text/javascript" src="./shapes_files/client.js.download" gapi_processed="true"></script>
+<script>console.log(window.performance.now())</script>
+<script src="./shapes_files/beforePyret.js.download"></script>
+<script>
+var APP_BASE_URL = "https://code.pyret.org";
+var CSRF_TOKEN = "h3taNvmi-5jtLefQihha50PtcypBKbbe90_o";
+$.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+  var a = document.createElement("a");
+  a.href = options.url;
+  if(a.origin === APP_BASE_URL) {
+    jqXHR.setRequestHeader('X-CSRF-Token', CSRF_TOKEN);
+  }
+});
+</script>
+
+<!-- <script type="text/javascript"
+        src="https://caja.appspot.com/caja.js"></script> -->
+
+
+<script src="./shapes_files/cpo-main.jarr.gz.js.download" type="text/javascript"></script><iframe id="apiproxy4452f935f84de9828846d5a9ad0637fa42477e980.147913276" name="apiproxy4452f935f84de9828846d5a9ad0637fa42477e980.147913276" src="./shapes_files/proxy.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px; display: none;"></iframe><iframe id="apiproxyd7fbf427f398c862617c2e9cf358edcac774b5f70.735415269" name="apiproxyd7fbf427f398c862617c2e9cf358edcac774b5f70.735415269" src="./shapes_files/proxy(1).html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px; display: none;"></iframe><div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-draggable ui-resizable" tabindex="-1" role="dialog" aria-describedby="ui-id-1" aria-labelledby="ui-id-2" style="position: absolute; height: auto; width: 70%; top: 394px; left: 283px; display: none;"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-id-2" class="ui-dialog-title">table data</span><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span></button></div><div id="ui-id-1" class="ui-dialog-content ui-widget-content" style="z-index: 15000; display: block; width: auto; min-height: 80px; max-height: none; height: auto;"><textarea class="auto-highlight" editable="false"></textarea></div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div></div></body></html>
